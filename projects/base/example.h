@@ -1,6 +1,10 @@
 #pragma once
 #include "app.h"
 #include "Grid.h"
+#include "Tiles.h"
+
+#include "Assets.h"
+
 
 class Example : public App
 {
@@ -14,8 +18,9 @@ public:
 	static Example &inst();
 
 	sf::Sprite *m_backgroundSprite;
-	sf::Texture Brick;
-
+	Tiles map;
+	Assets allTextures;
+	
 	Grid xLines;
 	Grid yLines;
 };

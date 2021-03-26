@@ -1,5 +1,5 @@
+#include <iostream>
 #include "example.h"
-#include "Grid.h"
 
 
 using namespace sf;
@@ -24,7 +24,10 @@ bool Example::start()
 	m_backgroundSprite = kage::TextureManager::getSprite("data/sky.jpg");
 	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
 	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
-	
+
+	Tiles map;
+	map.MapLayout();
+
 	return true;
 
 }
@@ -35,6 +38,10 @@ void Example::update(float deltaT)
 	{
 		m_running = false;
 	}
+
+	
+	sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(m_window);
+	std::cout << mouseCoordinates.x << " " << mouseCoordinates.y << std::endl;
 
 	ImGui::Begin("Kage2D");
 	if(ImGui::Button("Exit"))
@@ -47,9 +54,9 @@ void Example::update(float deltaT)
 void Example::render()
 {
 	m_window.draw(*m_backgroundSprite);
-	xLines.Render(m_window);
-	yLines.Render(m_window);
-
+	xLines.gridRender(m_window);
+	yLines.gridRender(m_window);
+	allTextures.RenderAssets(m_window);
 }
 
 void Example::cleanup()

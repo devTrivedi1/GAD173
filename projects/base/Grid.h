@@ -1,7 +1,7 @@
 #pragma once
-#include "app.h"
+#include <SFML/Graphics.hpp>
 
-#define X_LINES 25
+#define X_LINES 13
 #define Y_LINES 13
 
 class Grid
@@ -11,8 +11,9 @@ public:
 	Grid();
 	~Grid();
 	
-	void Render(sf::RenderWindow &window);
-
+	
+	void gridRender(sf::RenderWindow& window);
+	
 	sf::RectangleShape xLines[X_LINES];
 	sf::RectangleShape yLines[Y_LINES];
 	
