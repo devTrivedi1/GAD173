@@ -12,7 +12,7 @@ public:
 	
 	void MapLayout();
 	
-	int tileId = 0;
+	
 
 	int map[MAP_OVERVIEW] =
 	{

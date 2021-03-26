@@ -39,16 +39,16 @@ void Example::update(float deltaT)
 		m_running = false;
 	}
 
-	
-	sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(m_window);
-	std::cout << mouseCoordinates.x << " " << mouseCoordinates.y << std::endl;
-
 	ImGui::Begin("Kage2D");
 	if(ImGui::Button("Exit"))
 	{ 
 		m_running = false;
 	}
+	allTextures.AssetImages();
+
 	ImGui::End();
+	
+
 }
 
 void Example::render()

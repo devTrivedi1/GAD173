@@ -4,6 +4,9 @@
 #define X_LINES 13
 #define Y_LINES 13
 
+#define CELL_WIDTH 120
+#define CELL_HEIGHT 40
+
 class Grid
 {
 public:
