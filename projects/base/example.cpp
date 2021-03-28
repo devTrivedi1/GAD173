@@ -25,8 +25,8 @@ bool Example::start()
 	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
 	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
 
-	Tiles map;
-	map.MapLayout();
+	/*Tiles map;
+	map.MapLayout();*/
 
 	return true;
 
@@ -44,8 +44,12 @@ void Example::update(float deltaT)
 	{ 
 		m_running = false;
 	}
+	map.ButtonImages();
 	
 	ImGui::End();
+
+	mouseClick.MouseClick();
+
 }
 
 void Example::render()

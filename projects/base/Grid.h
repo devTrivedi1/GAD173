@@ -4,8 +4,8 @@
 #define GRID_X_NUMBERS 13
 #define GRID_Y_NUMBERS 13
 
-#define CELL_SPACING_X  40
-#define CELL_SPACING_Y 40
+#define CELL_WIDTH  40
+#define CELL_HEIGHT 40
 
 #define CELL_SIZE 480
 

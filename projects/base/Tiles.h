@@ -2,8 +2,7 @@
 #include "app.h"
 #include "Grid.h"
 
-
-#define MAP_OVERVIEW 144
+#define TOTAL_GRID GRID_X_NUMBERS * GRID_Y_NUMBERS 
 
 class Tiles : public App
 {
@@ -14,10 +13,11 @@ public:
 	void MapLayout();
 	void ButtonImages();
 	void TileRender(sf::RenderWindow& window);
+
 	
 
 	int tileId = 0;
-	int map[MAP_OVERVIEW] =
+	int map[TOTAL_GRID] =
 	{
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 1, 1, 0, 0, 0, 2, 2, 0, 1, 1, 0,
@@ -39,7 +39,7 @@ public:
 	sf::Texture* fenceTexture;
 
 
-	sf::Sprite images[144];
+	sf::Sprite images[TOTAL_GRID];
 
 
 };

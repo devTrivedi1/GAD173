@@ -24,7 +24,7 @@ Grid::Grid()
 	{
 
 		xLines[i].setSize(sf::Vector2f(CELL_SIZE, 1.5f));
-		xLines[i].setPosition(sf::Vector2f(OFFSET_X, OFFSET_Y + i * CELL_SPACING_Y)); 
+		xLines[i].setPosition(sf::Vector2f(OFFSET_X, OFFSET_Y + i * CELL_HEIGHT)); 
 
 	}
 
@@ -32,7 +32,7 @@ Grid::Grid()
 	{
 
 		yLines[i].setSize(sf::Vector2f(1.5f, CELL_SIZE));
-		yLines[i].setPosition(sf::Vector2f(OFFSET_X + i * CELL_SPACING_X, OFFSET_Y));
+		yLines[i].setPosition(sf::Vector2f(OFFSET_X + i * CELL_WIDTH, OFFSET_Y));
 	}
 }
 
