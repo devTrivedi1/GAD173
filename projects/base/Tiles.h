@@ -1,19 +1,22 @@
 #pragma once
 #include "app.h"
+#include "Grid.h"
 
 
 #define MAP_OVERVIEW 144
 
-class Tiles
+class Tiles : public App
 {
 public:
 	Tiles();
 	~Tiles();
 	
 	void MapLayout();
-	
+	void ButtonImages();
+	void TileRender(sf::RenderWindow& window);
 	
 
+	int tileId = 0;
 	int map[MAP_OVERVIEW] =
 	{
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -30,9 +33,14 @@ public:
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	};
 
-	void TileRender(sf::RenderWindow& window);
+	sf::Texture* treeTexture;
+	sf::Texture* waterTexture;
+	sf::Texture* landTexture;
+	sf::Texture* fenceTexture;
 
-	
+
+	sf::Sprite images[144];
+
 
 };
 

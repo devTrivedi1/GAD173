@@ -2,7 +2,6 @@
 #include "app.h"
 #include "Grid.h"
 #include "Tiles.h"
-#include "Assets.h"
 
 
 class Example : public App
@@ -18,7 +17,7 @@ public:
 
 	sf::Sprite *m_backgroundSprite;
 	Tiles map;
-	Assets allTextures;
+	
 	
 	Grid xLines;
 	Grid yLines;

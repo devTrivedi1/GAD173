@@ -44,8 +44,7 @@ void Example::update(float deltaT)
 	{ 
 		m_running = false;
 	}
-	allTextures.AssetImages();
-
+	
 	ImGui::End();
 }
 
@@ -54,7 +53,7 @@ void Example::render()
 	m_window.draw(*m_backgroundSprite);
 	xLines.gridRender(m_window);
 	yLines.gridRender(m_window);
-	allTextures.RenderAssets(m_window);
+	map.TileRender(m_window);
 }
 
 void Example::cleanup()
