@@ -15,6 +15,7 @@ void Assets::RenderAssets(sf::RenderWindow &window)
 
  Assets::Assets()
 {
+	 
 	
 	//Textures---------------------------------------------------------
 
@@ -42,25 +43,28 @@ void Assets::RenderAssets(sf::RenderWindow &window)
 			if (placement.map[i] == 0)
 			{
 				textureTiles[i].setTexture(*landTexture);
+				placement.MapLayout();
 			}
 
 			if (placement.map[i] == 1)
 			{
 				textureTiles[i].setTexture(*treeTexture);
-				textureTiles[i].setPosition(sf::Vector2f(x * 2, y * 2));
+				placement.MapLayout();
 			}
 
 			if (placement.map[i] == 2)
 			{
 				textureTiles[i].setTexture(*waterTexture);
+				placement.MapLayout();
 			}
 
 			if (placement.map[i] == 3)
 			{
 				textureTiles[i].setTexture(*fenceTexture);
+				placement.MapLayout();
 			}
-
-			textureTiles[i].setPosition(sf::Vector2f(x * 15, y * 15));
+			textureTiles[i].setPosition(sf::Vector2f(250 + x * 1, 250 + y * 1));
+			
 		}
 		std::cout << "\n";
 	}
@@ -89,36 +93,41 @@ void Assets::RenderAssets(sf::RenderWindow &window)
 	 }
 
 	 sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(m_window);
-
-	 int mouseX = mouseCoordinates.x / CELL_WIDTH;
-	 int mouseY = mouseCoordinates.y / CELL_HEIGHT;
-
-	 int i = mouseX + mouseY * 12;
-	 std::cout << i << std::endl;
-
-	 if (tileId == 0)
+	 if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 	 {
-		 textureTiles[i].setTexture(*landTexture);
-		 placement.map[i] = 0;
-	 }
-	 
-	 if (tileId == 1)
-	 {
-		 textureTiles[i].setTexture(*treeTexture);
-		 placement.map[i] = 1;
+		 int mouseX = mouseCoordinates.x / 12;
+		 int mouseY = mouseCoordinates.y / 12;
+		 int i = mouseX + mouseY * 12;
+
+		 std::cout << i << std::endl;
+
+
+		 if (tileId == 0)
+		 {
+			 textureTiles[i].setTexture(*landTexture);
+			 placement.map[i] = 0;
+		 }
+
+		 if (tileId == 1)
+		 {
+			 textureTiles[i].setTexture(*treeTexture);
+			 placement.map[i] = 1;
+		 }
+
+		 if (tileId == 2)
+		 {
+			 textureTiles[i].setTexture(*waterTexture);
+			 placement.map[i] = 2;
+		 }
+
+		 if (tileId == 3)
+		 {
+			 textureTiles[i].setTexture(*fenceTexture);
+			 placement.map[i] = 3;
+		 }
+
 	 }
 
-	 if (tileId == 2)
-	 {
-		 textureTiles[i].setTexture(*waterTexture);
-		 placement.map[i] = 2;
-	 }
-
-	 if (tileId == 3)
-	 {
-		 textureTiles[i].setTexture(*fenceTexture);
-		 placement.map[i] = 3;
-	 }
 
  }
 

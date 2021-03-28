@@ -47,8 +47,6 @@ void Example::update(float deltaT)
 	allTextures.AssetImages();
 
 	ImGui::End();
-	
-
 }
 
 void Example::render()
