@@ -2,7 +2,8 @@
 #include "app.h"
 #include "Grid.h"
 
-#define TOTAL_GRID GRID_X_NUMBERS * GRID_Y_NUMBERS 
+
+#define TOTAL_GRID GRID_X_NUMBERS * GRID_Y_NUMBERS
 
 class Tiles : public App
 {
@@ -13,10 +14,10 @@ public:
 	void MapLayout();
 	void ButtonImages();
 	void TileRender(sf::RenderWindow& window);
-
+	void Load();
 	
-
 	int tileId = 0;
+	
 	int map[TOTAL_GRID] =
 	{
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

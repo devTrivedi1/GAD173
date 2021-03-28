@@ -1,9 +1,7 @@
 #include "Tiles.h"
 
-
-void Tiles::MapLayout()
+void Tiles::Load()
 {
-
 
 	//Textures---------------------------------------------------------
 
@@ -20,13 +18,17 @@ void Tiles::MapLayout()
 
 	//Textures----------------------------------------------------------
 
+}
+void Tiles::MapLayout()
+{
+
 	//Textures in the editor-------------------------------------------------
 
-	for (size_t y = 0; y < 12; y++)
+	for (size_t y = 0; y < 13; y++)
 	{
-		for (size_t x = 0; x < 12; x++)
+		for (size_t x = 0; x < 13; x++)
 		{
-			int i = x + y * 12;
+			int i = x + y * 13;
 			images[i].setPosition(sf::Vector2f
 								 (OFFSET_X + x * CELL_WIDTH,
 								  OFFSET_Y + y * CELL_HEIGHT));

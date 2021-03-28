@@ -7,9 +7,8 @@ class MouseInput : public App
 public:
 	MouseInput();
 	~MouseInput();
-	void MouseClick();
-
-	Tiles map;
+	void MouseClick(Tiles &map);
+	
 
 };
 

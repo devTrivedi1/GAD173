@@ -19,6 +19,6 @@ public:
 	sf::Sprite *m_backgroundSprite;
 	Tiles map;
 	MouseInput mouseClick;
-	Grid xLines;
-	Grid yLines;
+	Grid Lines;
+	
 };

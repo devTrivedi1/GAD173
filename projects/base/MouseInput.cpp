@@ -1,20 +1,18 @@
 #include "MouseInput.h"
 
-void MouseInput::MouseClick()
+void MouseInput::MouseClick(Tiles &map)
 {
 	//MouseCoordinates----------------------------------------------------------------------
 
 	sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(m_window);
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)
-		&& mouseCoordinates.x >= 0 && mouseCoordinates.x <= GRID_X_NUMBERS * CELL_WIDTH
-		&& mouseCoordinates.y >= 0 && mouseCoordinates.y <= GRID_Y_NUMBERS * CELL_HEIGHT)
+		&& mouseCoordinates.x >= 0 && mouseCoordinates.x <= OFFSET_X * CELL_WIDTH
+		&& mouseCoordinates.y >= 0 && mouseCoordinates.y <= OFFSET_Y * CELL_HEIGHT)
 	{
 		int mouseX = mouseCoordinates.x / CELL_WIDTH;
 		int mouseY = mouseCoordinates.y / CELL_HEIGHT;
 		int i = mouseX + mouseY * 12;
 		std::cout << i << std::endl;
-
-
 
 		if (map.tileId == 0)
 		{
