@@ -1,13 +1,13 @@
 #pragma once
-#include "app.h"
+#include <SFML/Graphics.hpp>
 #include "Tiles.h"
 
-class MouseInput : public App
+class MouseInput 
 {
 public:
 	MouseInput();
 	~MouseInput();
-	void MouseClick(Tiles &map);
+	void MouseClick(Tiles& map, sf::RenderWindow &window);
 	
 
 };

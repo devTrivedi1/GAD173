@@ -2,8 +2,6 @@
 #include "example.h"
 
 
-using namespace sf;
-
 Example::Example(): App()
 {
 }
@@ -27,8 +25,6 @@ bool Example::start()
 
 	map.Load();
 	map.MapLayout();
-
-
 	return true;
 
 }
@@ -45,11 +41,11 @@ void Example::update(float deltaT)
 	{ 
 		m_running = false;
 	}
-	map.ButtonImages();
+	map.ButtonImages(m_window);
 	
 	ImGui::End();
 	
-	mouseClick.MouseClick(map);
+	mouseClick.MouseClick(map, m_window);
 
 }
 

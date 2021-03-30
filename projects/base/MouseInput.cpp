@@ -1,13 +1,14 @@
 #include "MouseInput.h"
+#include <iostream>
 
-void MouseInput::MouseClick(Tiles &map)
+void MouseInput::MouseClick(Tiles &map, sf::RenderWindow& window)
 {
 	//MouseCoordinates----------------------------------------------------------------------
 
-	sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(m_window);
+	sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(window);
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)
-		&& mouseCoordinates.x >= 0 && mouseCoordinates.x <= OFFSET_X * CELL_WIDTH
-		&& mouseCoordinates.y >= 0 && mouseCoordinates.y <= OFFSET_Y * CELL_HEIGHT)
+		&& mouseCoordinates.x >= OFFSET_Y && mouseCoordinates.x <= OFFSET_X * CELL_WIDTH
+		&& mouseCoordinates.y >= OFFSET_X && mouseCoordinates.y <= OFFSET_Y * CELL_HEIGHT)
 	{
 		int mouseX = mouseCoordinates.x / CELL_WIDTH;
 		int mouseY = mouseCoordinates.y / CELL_HEIGHT;
@@ -16,25 +17,25 @@ void MouseInput::MouseClick(Tiles &map)
 
 		if (map.tileId == 0)
 		{
-			map.images[i].setTexture(*map.landTexture);
+			map.tileImage[i].setTexture(*map.landTexture);
 			map.map[i] = 0;
 		}
 
 		if (map.tileId == 1)
 		{
-			map.images[i].setTexture(*map.treeTexture);
+			map.tileImage[i].setTexture(*map.treeTexture);
 			map.map[i] = 1;
 		}
 
 		if (map.tileId == 2)
 		{
-			map.images[i].setTexture(*map.waterTexture);
+			map.tileImage[i].setTexture(*map.waterTexture);
 			map.map[i] = 2;
 		}
 
 		if (map.tileId ==  3)
 		{
-			map.images[i].setTexture(*map.fenceTexture);
+			map.tileImage[i].setTexture(*map.fenceTexture);
 			map.map[i] = 3;
 		}
 

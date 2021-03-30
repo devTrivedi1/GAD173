@@ -1,24 +1,25 @@
 #pragma once
-#include "app.h"
+#include <SFML/graphics.hpp>
 #include "Grid.h"
+#include <kage2dutil\imgui-SFML.h>
+#include <kage2dutil\texture_manager.h>
 
 
-#define TOTAL_GRID GRID_X_NUMBERS * GRID_Y_NUMBERS
 
-class Tiles : public App
+class Tiles 
 {
 public:
 	Tiles();
 	~Tiles();
 	
 	void MapLayout();
-	void ButtonImages();
-	void TileRender(sf::RenderWindow& window);
+	void ButtonImages(sf::RenderWindow& window);
 	void Load();
+	void TileRender(sf::RenderWindow& window);
 	
 	int tileId = 0;
 	
-	int map[TOTAL_GRID] =
+	int map[144] =
 	{
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 1, 1, 0, 0, 0, 2, 2, 0, 1, 1, 0,
@@ -34,13 +35,15 @@ public:
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	};
 
+
+
 	sf::Texture* treeTexture;
 	sf::Texture* waterTexture;
 	sf::Texture* landTexture;
 	sf::Texture* fenceTexture;
 
 
-	sf::Sprite images[TOTAL_GRID];
+	sf::Sprite tileImage[144];
 
 
 };

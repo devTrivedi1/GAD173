@@ -17,6 +17,7 @@ public:
 	static Example &inst();
 
 	sf::Sprite *m_backgroundSprite;
+
 	Tiles map;
 	MouseInput mouseClick;
 	Grid Lines;

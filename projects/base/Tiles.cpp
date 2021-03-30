@@ -1,10 +1,15 @@
 #include "Tiles.h"
+#include <iostream>
+
+
+
+
 
 void Tiles::Load()
 {
 
 	//Textures---------------------------------------------------------
-
+	
 	treeTexture = kage::TextureManager::getTexture("data/Tree.png");
 
 
@@ -24,35 +29,35 @@ void Tiles::MapLayout()
 
 	//Textures in the editor-------------------------------------------------
 
-	for (size_t y = 0; y < 13; y++)
+	for (size_t y = 0; y < 12; y++)
 	{
-		for (size_t x = 0; x < 13; x++)
+		for (size_t x = 0; x < 12; x++)
 		{
-			int i = x + y * 13;
-			images[i].setPosition(sf::Vector2f
-								 (OFFSET_X + x * CELL_WIDTH,
-								  OFFSET_Y + y * CELL_HEIGHT));
+			int i = x + y * 12;
+			
 
 			if (map[i] == 0)
 			{
-				images[i].setTexture(*landTexture);
+				tileImage[i].setTexture(*landTexture);
 			}
 
 			if (map[i] == 1)
 			{
-				images[i].setTexture(*treeTexture);
+				tileImage[i].setTexture(*treeTexture);
 			}
 
 			if (map[i] == 2)
 			{
-				images[i].setTexture(*waterTexture);
+				tileImage[i].setTexture(*waterTexture);
 			}
 
 			if (map[i] == 3)
 			{
-				images[i].setTexture(*fenceTexture);
+				tileImage[i].setTexture(*fenceTexture);
 			}
-			
+			tileImage[i].setPosition(sf::Vector2f
+									(OFFSET_X + x * CELL_WIDTH,
+									OFFSET_Y + y * CELL_HEIGHT));
 		}
 		std::cout << "\n";
 	}
@@ -61,7 +66,7 @@ void Tiles::MapLayout()
 }
 
 
-void Tiles::ButtonImages()
+void Tiles::ButtonImages(sf::RenderWindow& window)
 {
 	//ImGui TextureImages------------------------------------------------------- 
 	if (ImGui::ImageButton(*landTexture, sf::Vector2f(40, 40)))
@@ -80,14 +85,15 @@ void Tiles::ButtonImages()
 	{
 		tileId = 3;
 	}
+	
 	//ImGui Texture Images----------------------------------------------------------
 }
 
 void Tiles::TileRender(sf::RenderWindow& window)
 {
-	for (size_t i = 0; i < TOTAL_GRID; i++)
+	for (size_t i = 0; i < 144; i++)
 	{
-		m_window.draw(images[i]);
+		window.draw(tileImage[i]);
 	}
 
 }
