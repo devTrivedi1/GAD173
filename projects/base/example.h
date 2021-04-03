@@ -2,7 +2,6 @@
 #include "app.h"
 #include "Grid.h"
 #include "Tiles.h"
-#include "MouseInput.h"
 
 
 class Example : public App
@@ -19,7 +18,5 @@ public:
 	sf::Sprite *m_backgroundSprite;
 
 	Tiles map;
-	MouseInput mouseClick;
 	Grid Lines;
-	
 };

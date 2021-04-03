@@ -26,7 +26,6 @@ bool Example::start()
 	map.Load();
 	map.MapLayout();
 	return true;
-
 }
 
 void Example::update(float deltaT)
@@ -37,16 +36,15 @@ void Example::update(float deltaT)
 	}
 
 	ImGui::Begin("Kage2D");
+
 	if(ImGui::Button("Exit"))
 	{ 
 		m_running = false;
 	}
-	map.ButtonImages(m_window);
-	
-	ImGui::End();
-	
-	mouseClick.MouseClick(map, m_window);
 
+	map.ButtonImages(m_window);
+	ImGui::End();	
+	map.TileUpdate(m_window);
 }
 
 void Example::render()
@@ -60,4 +58,3 @@ void Example::cleanup()
 {
 	delete m_backgroundSprite;
 }
-
