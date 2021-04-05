@@ -4,7 +4,7 @@
 #include <kage2dutil\imgui-SFML.h>
 #include <kage2dutil\texture_manager.h>
 
-
+#define TOTAL_CELLS CELL_COUNT_X * CELL_COUNT_Y
 
 class Tiles 
 {
@@ -19,7 +19,7 @@ public:
 	void TileUpdate(sf::RenderWindow& window);
 
 	int tileId = 0;
-	int map[144] =
+	int map[TOTAL_CELLS] =
 	{
 		1, 1, 2, 3, 5, 5, 6, 8, 8, 4, 4, 2,
 		5, 5, 5, 5, 3, 3, 2, 2, 1, 1, 1, 6,
@@ -46,7 +46,5 @@ public:
 	sf::Texture* yellow;
 	sf::Texture* pink;
 
-	sf::Sprite tileImage[144];
-
+	sf::Sprite tileSprite[TOTAL_CELLS];
 };
-

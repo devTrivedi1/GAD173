@@ -43,6 +43,10 @@ void Example::update(float deltaT)
 	}
 
 	map.ButtonImages(m_window);
+	if (ImGui::Button("Save"))
+	{
+		SaveLoad::Save("data/SaveFiles/MapLayout.txt", map.map, 12, 12);
+	}
 	ImGui::End();	
 	map.TileUpdate(m_window);
 }
