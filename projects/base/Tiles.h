@@ -19,7 +19,7 @@ public:
 	void TileUpdate(sf::RenderWindow& window);
 
 	int tileId = 0;
-	int map[TOTAL_CELLS] =
+	int map[TOTAL_CELLS]; /*=
 	{
 		1, 1, 2, 3, 5, 5, 6, 8, 8, 4, 4, 2,
 		5, 5, 5, 5, 3, 3, 2, 2, 1, 1, 1, 6,
@@ -34,7 +34,7 @@ public:
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
-	};
+	};*/
 
 	sf::Texture* black;
 	sf::Texture* red;

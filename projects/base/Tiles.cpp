@@ -130,8 +130,8 @@ void Tiles::TileUpdate(sf::RenderWindow& window)
 {
 	sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(window);
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)
-		&& mouseCoordinates.x >= OFFSET_X && mouseCoordinates.x <= OFFSET_X * CELL_SIZE_X
-		&& mouseCoordinates.y >= OFFSET_Y && mouseCoordinates.y <= OFFSET_Y * CELL_SIZE_Y)
+		&& mouseCoordinates.x >= OFFSET_X && mouseCoordinates.x <= OFFSET_X + CELL_SIZE_X * CELL_COUNT_X
+		&& mouseCoordinates.y >= OFFSET_Y && mouseCoordinates.y <= OFFSET_Y + CELL_SIZE_Y * CELL_COUNT_Y)
 	{
 		int mouseX = (mouseCoordinates.x - OFFSET_X) / CELL_SIZE_X;
 		int mouseY = (mouseCoordinates.y - OFFSET_Y) / CELL_SIZE_Y;

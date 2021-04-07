@@ -54,8 +54,8 @@ void Example::update(float deltaT)
 void Example::render()
 {
 	m_window.draw(*m_backgroundSprite);
-	Lines.gridRender(m_window);
 	map.TileRender(m_window);
+	Lines.gridRender(m_window);
 }
 
 void Example::cleanup()
