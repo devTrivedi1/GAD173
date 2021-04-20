@@ -4,7 +4,6 @@
 #include "Tiles.h"
 #include "SaveLoad.h"
 
-
 class Example : public App
 {
 public:
@@ -17,6 +16,8 @@ public:
 	static Example &inst();
 
 	sf::Sprite *m_backgroundSprite;
+
+	bool showColourWindow = false;
 
 	Tiles map;
 	Grid Lines;

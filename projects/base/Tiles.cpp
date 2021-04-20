@@ -10,7 +10,7 @@ Tiles::~Tiles()
 
 }
 
-void Tiles::Load()
+void Tiles::LoadTexture()
 {
 	//Textures---------------------------------------------------------
 	purple = kage::TextureManager::getTexture("data/Purple.png");
@@ -22,6 +22,8 @@ void Tiles::Load()
 	red = kage::TextureManager::getTexture("data/Red.png");
 	pink = kage::TextureManager::getTexture("data/Pink.png");
 	black = kage::TextureManager::getTexture("data/Black.png");
+	transparent = kage::TextureManager::getTexture("data/White.png");
+	
 	//Textures----------------------------------------------------------
 }
 
@@ -73,6 +75,11 @@ void Tiles::MapLayout()
 			if (map[i] == 8)
 			{
 				tileSprite[i].setTexture(*yellow);
+			}
+			if (map[i] == 9)
+			{
+				tileSprite[i].setTexture(*transparent);
+				tileSprite[i].setColor(sf::Color(0));
 			}
 			tileSprite[i].setPosition(sf::Vector2f
 									(OFFSET_X + x * CELL_SIZE_X,
@@ -126,12 +133,11 @@ void Tiles::ButtonImages(sf::RenderWindow& window)
 	//ImGui Texture Images----------------------------------------------------------
 }
 
-void Tiles::TileUpdate(sf::RenderWindow& window)
+void Tiles::UpdatingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordinates)
 {
-	sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(window);
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)
-		&& mouseCoordinates.x >= OFFSET_X && mouseCoordinates.x <= OFFSET_X + CELL_SIZE_X * CELL_COUNT_X
-		&& mouseCoordinates.y >= OFFSET_Y && mouseCoordinates.y <= OFFSET_Y + CELL_SIZE_Y * CELL_COUNT_Y)
+		&& mouseCoordinates.x > OFFSET_X && mouseCoordinates.x < OFFSET_X + CELL_SIZE_X * CELL_COUNT_X
+		&& mouseCoordinates.y > OFFSET_Y && mouseCoordinates.y < OFFSET_Y + CELL_SIZE_Y * CELL_COUNT_Y)
 	{
 		int mouseX = (mouseCoordinates.x - OFFSET_X) / CELL_SIZE_X;
 		int mouseY = (mouseCoordinates.y - OFFSET_Y) / CELL_SIZE_Y;
@@ -141,57 +147,82 @@ void Tiles::TileUpdate(sf::RenderWindow& window)
 		if (tileId == 0)
 		{
 			tileSprite[i].setTexture(*black);
+			tileSprite[i].setColor(sf::Color(255, 255, 255));
 			map[i] = 0;
 		}
 
 		if (tileId == 1)
 		{
 			tileSprite[i].setTexture(*green);
+			tileSprite[i].setColor(sf::Color(255, 255, 255));
 			map[i] = 1;
 		}
 
 		if (tileId == 2)
 		{
 			tileSprite[i].setTexture(*red);
+			tileSprite[i].setColor(sf::Color(255, 255, 255));
 			map[i] = 2;
 		}
 
 		if (tileId == 3)
 		{
 			tileSprite[i].setTexture(*blue);
+			tileSprite[i].setColor(sf::Color(255, 255, 255));
 			map[i] = 3;
 		}
 
 		if (tileId == 4)
 		{
 			tileSprite[i].setTexture(*purple);
+			tileSprite[i].setColor(sf::Color(255, 255, 255));
 			map[i] = 4;
 		}
 
 		if (tileId == 5)
 		{
 			tileSprite[i].setTexture(*teal);
+			tileSprite[i].setColor(sf::Color(255, 255, 255));
 			map[i] = 5;
 		}
 
 		if (tileId == 6)
 		{
 			tileSprite[i].setTexture(*orange);
+			tileSprite[i].setColor(sf::Color(255, 255, 255));
 			map[i] = 6;
 		}
 
 		if (tileId == 7)
 		{
 			tileSprite[i].setTexture(*pink);
+			tileSprite[i].setColor(sf::Color(255, 255, 255));
 			map[i] = 7;
 		}
 		if (tileId == 8)
 		{
 			tileSprite[i].setTexture(*yellow);
+			tileSprite[i].setColor(sf::Color(255, 255, 255));
 			map[i] = 8;
 		}
+		
 	}
+}
+
+void Tiles::DeletingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordinates)
+{
 	
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)
+		&& mouseCoordinates.x > OFFSET_X && mouseCoordinates.x < OFFSET_X + CELL_SIZE_X * CELL_COUNT_X
+		&& mouseCoordinates.y > OFFSET_Y && mouseCoordinates.y < OFFSET_Y + CELL_SIZE_Y * CELL_COUNT_Y)
+	{
+		int mouseX = (mouseCoordinates.x - OFFSET_X) / CELL_SIZE_X;
+		int mouseY = (mouseCoordinates.y - OFFSET_Y) / CELL_SIZE_Y;
+		int i = mouseX + mouseY * CELL_COUNT_X;
+		std::cout << i << std::endl;
+
+		tileSprite[i].setColor(sf::Color(0));
+	}
 }
 
 void Tiles::TileRender(sf::RenderWindow& window)

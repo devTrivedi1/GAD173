@@ -1,5 +1,4 @@
 #include "SaveLoad.h"
-#include <fstream>
 
 
 SaveLoad::SaveLoad()
@@ -27,19 +26,39 @@ void SaveLoad::Save(std::string mapSave, int* buffer, int Y_COUNT, int X_COUNT)
 	}
 	saveMap.close();
 
-	std::string number = "GAME OVER MUSTAFA HAHA xD !!!!!";
-	std::string str1 = number.substr(0, 4);
-	std::string str2 = number.substr(5, 4);
-	std::string str3 = number.substr(10, 7);
-	std::string str4 = number.substr(18, 4);
-	std::string str5 = number.substr(23, 2);
-	std::string str6 = number.substr(25, 4);
-
-	std::cout << number << std::endl;
-
 }
 
 void SaveLoad::Load(std::string mapSave)
 {
+
+	std::string line;
+	std::ifstream myfile(mapSave);
+
+	if (myfile.is_open())
+	{
+		int commaIndex = -1;
+
+		while (std::getline(myfile, line))
+		{
+			while (true)
+			{
+				int cutStart = commaIndex + 1;
+				commaIndex = line.find(',', commaIndex + 1);
+
+				std::string numStr = line.substr(cutStart, commaIndex - cutStart);
+
+				if (commaIndex < 0)
+					break;
+
+				int num = std::stoi(numStr);
+				std::cout << num << " ";
+			}
+			std::cout << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "Cannot open file" << std::endl;
+	}
 
 }

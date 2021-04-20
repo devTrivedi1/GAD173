@@ -23,7 +23,7 @@ bool Example::start()
 	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
 	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
 
-	map.Load();
+	map.LoadTexture();
 	map.MapLayout();
 	return true;
 }
@@ -35,20 +35,44 @@ void Example::update(float deltaT)
 		m_running = false;
 	}
 
-	ImGui::Begin("Kage2D");
+	sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(m_window);
 
-	if(ImGui::Button("Exit"))
-	{ 
-		m_running = false;
-	}
-
-	map.ButtonImages(m_window);
-	if (ImGui::Button("Save"))
+	ImGui::Begin("Kage2D", 0, ImGuiWindowFlags_MenuBar);
+	if (ImGui::BeginMenuBar())
 	{
-		SaveLoad::Save("data/SaveFiles/MapLayout.txt", map.map, 12, 12);
+		if (ImGui::BeginMenu("File"))
+		{
+			if (ImGui::MenuItem("Exit"))
+			{
+				m_running = false;
+			}
+			if (ImGui::MenuItem("Save"))
+			{
+				SaveLoad::Save("data/SaveFiles/MapLayout.txt", map.map, 12, 12);
+			}
+			if (ImGui::MenuItem("Load"))
+			{
+				SaveLoad::Load("data/SaveFiles/MapLayout.txt");
+			}
+			if (ImGui::MenuItem("Select colour"))
+			{
+				showColourWindow = true;
+			}
+			ImGui::EndMenu();
+		}
+		ImGui::EndMenuBar();
 	}
-	ImGui::End();	
-	map.TileUpdate(m_window);
+
+	ImGui::End();
+	if (showColourWindow)
+	{
+		ImGui::Begin("Colours");
+		map.ButtonImages(m_window);
+		ImGui::End();
+	}
+
+	map.DeletingTexture(m_window, mouseCoordinates);
+	map.UpdatingTexture(m_window, mouseCoordinates);
 }
 
 void Example::render()

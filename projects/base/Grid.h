@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-#define GRID_HORIZONTAL_LINES_COUNT 5 + 1
-#define GRID_VERTICAL_LINES_COUNT 2 + 1
+#define CELL_COUNT_X 12
+#define CELL_COUNT_Y 12
 
-#define CELL_COUNT_X (GRID_VERTICAL_LINES_COUNT - 1)
-#define CELL_COUNT_Y (GRID_HORIZONTAL_LINES_COUNT - 1)
+#define HORIZONTAL_LINES (CELL_COUNT_Y + 1)
+#define VERTICAL_LINES (CELL_COUNT_X + 1)
 
 #define CELL_SIZE_X 40
 #define CELL_SIZE_Y 40
@@ -24,6 +24,6 @@ public:
 	~Grid();
 	void gridRender(sf::RenderWindow& window);
 	
-	sf::RectangleShape xLines[GRID_HORIZONTAL_LINES_COUNT];
-	sf::RectangleShape yLines[GRID_VERTICAL_LINES_COUNT];	
+	sf::RectangleShape xLines[HORIZONTAL_LINES];
+	sf::RectangleShape yLines[VERTICAL_LINES];	
 };
