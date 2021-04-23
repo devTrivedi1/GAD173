@@ -3,6 +3,7 @@
 #include "Grid.h"
 #include "Tiles.h"
 #include "SaveLoad.h"
+#include "AnimatingSprites.h"
 
 class Example : public App
 {
@@ -19,6 +20,7 @@ public:
 
 	bool showColourWindow = false;
 
+	AnimatingSprites animation;
 	Tiles map;
 	Grid Lines;
 };
