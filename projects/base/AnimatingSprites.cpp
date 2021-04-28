@@ -1,8 +1,8 @@
 #include "AnimatingSprites.h"
 #include <kage2dutil/texture_manager.h>
 
-#define SPRITE_WIDTH 386
-#define SPRITE_HEIGHT 130
+#define SPRITE_WIDTH 120
+#define SPRITE_HEIGHT 40
 
 AnimatingSprites::AnimatingSprites():
 	spriteSheetTexture(nullptr)
@@ -30,27 +30,32 @@ void AnimatingSprites::LoadAnimation(std::string filename)
 	spriteSheetTexture = kage::TextureManager::getTexture(filename);
 	spriteSheet.setTexture(*spriteSheetTexture);
 	spriteSheet.setTextureRect(sf::IntRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT));
-	
+	spriteSheet.setPosition(sf::Vector2f(OFFSET_X + x * CELL_SIZE_X, OFFSET_Y + y * CELL_SIZE_Y));
 }
+
 void AnimatingSprites::UpdateAnimation()
 {
-	sf::Time time = clock.getElapsedTime();
-
-	if (time.asMilliseconds() > speed)
+	if (beginAnimation)
 	{
-		int x = SPRITE_WIDTH * currentFrame.x;
-		int y = SPRITE_HEIGHT * currentFrame.y;
-		
-		spriteSheet.setTextureRect(sf::IntRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT));
-		currentFrame.x++;
+		sf::Time time = clock.getElapsedTime();
 
-		if (currentFrame.x > endFrame.x)
+		if (time.asMilliseconds() > speed)
 		{
-			currentFrame.x = 0;
+			int x = SPRITE_WIDTH * currentFrame.x;
+			int y = SPRITE_HEIGHT * currentFrame.y;
+
+			spriteSheet.setTextureRect(sf::IntRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT));
+			currentFrame.x++;
+
+			if (currentFrame.x > endFrame.x)
+			{
+				currentFrame.x = 0;
+			}
+			clock.restart();
 		}
-		clock.restart();
 	}
 }
+
 void AnimatingSprites::RenderAnimation(sf::RenderWindow& window)
 {
 	window.draw(spriteSheet);

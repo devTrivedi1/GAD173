@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "Grid.h"
 
 
 class AnimatingSprites
@@ -10,6 +11,10 @@ private:
 	
 	sf::Texture* spriteSheetTexture;
 	sf::Sprite spriteSheet;
+	
+	int spriteId = 0;
+	sf::Sprite spriteTest[100];
+	
 	sf::Clock clock;
 
 	int xIndex = 0;
@@ -32,4 +37,3 @@ public:
 
 	void StartAnimation(sf::Vector2i startFrame, sf::Vector2i endFrame, int speed);
 };
-

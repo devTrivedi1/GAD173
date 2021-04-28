@@ -15,5 +15,4 @@ public:
 
 	static void Save(std::string mapSave, int* buffer, int Y_COUNT, int X_COUNT);
 	static void Load(std::string mapSave, int* buffer, int mapSize);
-
 };

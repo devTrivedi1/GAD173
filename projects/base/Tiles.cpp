@@ -1,5 +1,7 @@
 #include "Tiles.h"
 #include <iostream>
+#include <kage2dutil\texture_manager.h>
+#include <kage2dutil\imgui-SFML.h>
 
 Tiles::Tiles()
 {
@@ -25,8 +27,6 @@ void Tiles::LoadTexture()
 	transparent = kage::TextureManager::getTexture("data/White.png");
 	//Textures----------------------------------------------------------
 }
-
-
 
 void Tiles::MapLoad()
 {
@@ -144,8 +144,6 @@ void Tiles::ButtonImages(sf::RenderWindow& window)
 	//ImGui Texture Images----------------------------------------------------------
 }
 
-
-
 void Tiles::UpdatingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordinates)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)
@@ -238,7 +236,6 @@ void Tiles::DeletingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordina
 		tileSprite[i].setColor(sf::Color(0));
 	}
 }
-
 
 void Tiles::TileRender(sf::RenderWindow& window)
 {

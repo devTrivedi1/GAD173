@@ -1,7 +1,6 @@
 #include <iostream>
 #include "example.h"
 
-
 Example::Example(): App()
 {
 }
@@ -25,9 +24,11 @@ bool Example::start()
 
 	map.LoadTexture();
 	map.MapLoad();
+
 	animation.InitAnimation();
 	animation.LoadAnimation("data/Textures-Sprites/Breakout-SpriteSheet.png");
-	animation.StartAnimation(sf::Vector2i(0, 0), sf::Vector2i(2, 3), 100);
+	animation.StartAnimation(sf::Vector2i(0, 0), sf::Vector2i(9, 0), 100);
+
 	return true;
 }
 
@@ -57,7 +58,6 @@ void Example::update(float deltaT)
 			{
 				SaveLoad::Load("data/SaveFiles/MapLayout.txt", map.map, TOTAL_CELLS);
 				map.MapLoad();
-				
 			}
 			if (ImGui::MenuItem("Select colour"))
 			{
