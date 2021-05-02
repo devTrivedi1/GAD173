@@ -21,6 +21,6 @@ public:
 	bool showColourWindow = false;
 
 	AnimatingSprites animation;
-	Tiles map;
+	Tiles mapTiles;
 	Grid Lines;
 };

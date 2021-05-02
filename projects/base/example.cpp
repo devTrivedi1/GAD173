@@ -22,12 +22,12 @@ bool Example::start()
 	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
 	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
 
-	map.LoadTexture();
-	map.MapLoad();
+	mapTiles.LoadTexture();
+	mapTiles.MapLoad();
 
 	animation.InitAnimation();
 	animation.LoadAnimation("data/Textures-Sprites/Breakout-SpriteSheet.png");
-	animation.StartAnimation(sf::Vector2i(0, 0), sf::Vector2i(9, 0), 100);
+	///animation.StartAnimation(0 sf::Vector2i(0, 5), sf::Vector2i(5, 7), 100);
 
 	return true;
 }
@@ -50,14 +50,14 @@ void Example::update(float deltaT)
 			{
 				m_running = false;
 			}
-			if (ImGui::MenuItem("Save"))
+			if (ImGui::MenuItem("Save Map"))
 			{
-				SaveLoad::Save("data/SaveFiles/MapLayout.txt", map.map, 12, 12);
+				SaveLoad::Save("data/SaveFiles/MapLayout.txt", mapTiles.map, 12, 12);
 			}
 			if (ImGui::MenuItem("Load"))
 			{
-				SaveLoad::Load("data/SaveFiles/MapLayout.txt", map.map, TOTAL_CELLS);
-				map.MapLoad();
+				SaveLoad::Load("data/SaveFiles/MapLayout.txt", mapTiles.map, TOTAL_CELLS);
+				mapTiles.MapLoad();
 			}
 			if (ImGui::MenuItem("Select colour"))
 			{
@@ -72,21 +72,21 @@ void Example::update(float deltaT)
 	if (showColourWindow)
 	{
 		ImGui::Begin("Colours");
-		map.ButtonImages(m_window);
+		mapTiles.ButtonImages(m_window);
 		ImGui::End();
 	}
 
-	map.DeletingTexture(m_window, mouseCoordinates);
-	map.UpdatingTexture(m_window, mouseCoordinates);
-	animation.UpdateAnimation();
+	mapTiles.DeletingTexture(m_window, mouseCoordinates);
+	mapTiles.UpdatingTexture(m_window, mouseCoordinates);
+	//animation.UpdateAnimation();
 }
 
 void Example::render()
 {
 	m_window.draw(*m_backgroundSprite);
-	map.TileRender(m_window);
+	mapTiles.TileRender(m_window);
 	Lines.gridRender(m_window);
-	animation.RenderAnimation(m_window);
+	//animation.RenderAnimation(m_window);
 }
 
 void Example::cleanup()

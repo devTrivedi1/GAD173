@@ -2,6 +2,7 @@
 #include <iostream>
 #include <kage2dutil\texture_manager.h>
 #include <kage2dutil\imgui-SFML.h>
+#include <SFML/Window/Keyboard.hpp>
 
 Tiles::Tiles()
 {
@@ -25,11 +26,17 @@ void Tiles::LoadTexture()
 	pink = kage::TextureManager::getTexture("data/Pink.png");
 	black = kage::TextureManager::getTexture("data/Black.png");
 	transparent = kage::TextureManager::getTexture("data/White.png");
-	//Textures----------------------------------------------------------
-}
 
+
+		AnimatingSprites::LoadAnimation("data/Textures-Sprites/Breakout-SpriteSheet.png");
+
+	}
+
+int GREEN_INDEX = 1;
 void Tiles::MapLoad()
 {
+
+
 	//Textures in the editor-------------------------------------------------
 	for (size_t y = 0; y < CELL_COUNT_Y; y++)
 	{
@@ -37,39 +44,63 @@ void Tiles::MapLoad()
 		{
 			int i = x + y * CELL_COUNT_X;
 
+			std::cout << i << std::endl;
+			
+			//animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, map[i]), sf::Vector2i(5, map[i]), 100);
+
+
 			if (map[i] == 0)
 			{
-				tileSprite[i].setTexture(*black);
-				tileSprite[i].setColor(sf::Color(255, 255, 255));
+				
+				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 7), sf::Vector2i(5, 7), 100);
+
+			//tileSprite[i].setTexture(*black);
+				//tileSprite[i].setColor(sf::Color(255, 255, 255));
 			}
 
 			if (map[i] == 1)
 			{
-				tileSprite[i].setTexture(*green);
-				tileSprite[i].setColor(sf::Color(255, 255, 255));
+				//tileSprite[i].setTexture(*green);
+			//	tileSprite[i].setColor(sf::Color(255, 255, 255));
+
+			
+
+				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, GREEN_INDEX), sf::Vector2i(5, GREEN_INDEX), 100);
 			}
 
 			if (map[i] == 2)
 			{
-				tileSprite[i].setTexture(*red);
-				tileSprite[i].setColor(sf::Color(255, 255, 255));
+				//animation.StartAnimation(i, sf::Vector2i(0, 5), sf::Vector2i(5, 7), 100);
+				//tileSprite[i].setTexture(*red);
+				//tileSprite[i].setColor(sf::Color(255, 255, 255));
+
+
+				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 3), sf::Vector2i(5, 3), 100);
 			}
 
 			if (map[i] == 3)
 			{
-				tileSprite[i].setTexture(*blue);
-				tileSprite[i].setColor(sf::Color(255, 255, 255));
+
+				//tileSprite[i].setTexture(*blue);
+				//tileSprite[i].setColor(sf::Color(255, 255, 255));
+
+
+
+				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 0), sf::Vector2i(5, 0), 100);
 			}
 
 			if (map[i] == 4)
 			{
-				tileSprite[i].setTexture(*purple);
-				tileSprite[i].setColor(sf::Color(255, 255, 255));
+				//tileSprite[i].setTexture(*purple);
+				//tileSprite[i].setColor(sf::Color(255, 255, 255));
+				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 8), sf::Vector2i(5, 8), 100);
+
 			}
 			if (map[i] == 5)
 			{
 				tileSprite[i].setTexture(*teal);
 				tileSprite[i].setColor(sf::Color(255, 255, 255));
+				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 5), sf::Vector2i(5, 5), 100);
 			}
 			if (map[i] == 6)
 			{
@@ -92,6 +123,7 @@ void Tiles::MapLoad()
 				tileSprite[i].setTexture(*transparent);
 				tileSprite[i].setColor(sf::Color(0));
 			}
+
 			tileSprite[i].setPosition(sf::Vector2f
 									(OFFSET_X + x * CELL_SIZE_X,
 									OFFSET_Y + y * CELL_SIZE_Y));
@@ -146,6 +178,7 @@ void Tiles::ButtonImages(sf::RenderWindow& window)
 
 void Tiles::UpdatingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordinates)
 {
+	
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)
 		&& mouseCoordinates.x > OFFSET_X && mouseCoordinates.x < OFFSET_X + CELL_SIZE_X * CELL_COUNT_X
 		&& mouseCoordinates.y > OFFSET_Y && mouseCoordinates.y < OFFSET_Y + CELL_SIZE_Y * CELL_COUNT_Y)
@@ -155,25 +188,31 @@ void Tiles::UpdatingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordina
 		int i = mouseX + mouseY * CELL_COUNT_X;
 		std::cout << i << std::endl;
 
+		map[i] = tileId;
+
 		if (tileId == 0)
 		{
-			tileSprite[i].setTexture(*black);
+		
+			
+			/*tileSprite[i].setTexture(*black);
 			map[i] = 0;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));
+			tileSprite[i].setColor(sf::Color(255, 255, 255));*/
 		}
 
 		if (tileId == 1)
 		{
-			tileSprite[i].setTexture(*green);
-			map[i] = 1;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));
+			
+			/*tileSprite[i].setTexture(*green);
+			
+			tileSprite[i].setColor(sf::Color(255, 255, 255));*/
 		}
 
 		if (tileId == 2)
 		{
-			tileSprite[i].setTexture(*red);
-			map[i] = 2;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));
+			
+			/*tileSprite[i].setTexture(*red);
+			
+			tileSprite[i].setColor(sf::Color(255, 255, 255));*/
 		}
 
 		if (tileId == 3)
@@ -216,8 +255,13 @@ void Tiles::UpdatingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordina
 			map[i] = 8;
 			tileSprite[i].setColor(sf::Color(255, 255, 255));
 		}
-		
+	
 	}
+
+	for (int i = 0; i < TOTAL_CELLS; i++) {
+		animations[i].UpdateAnimation();
+	}
+
 }
 
 void Tiles::DeletingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordinates)
@@ -243,4 +287,11 @@ void Tiles::TileRender(sf::RenderWindow& window)
 	{
 		window.draw(tileSprite[i]);
 	}
+
+	for (int i = 0; i < TOTAL_CELLS; i++) {
+		animations[i].RenderAnimation(window);
+
+	}
+
+
 }

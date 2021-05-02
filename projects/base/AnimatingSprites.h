@@ -3,22 +3,21 @@
 #include <string>
 #include "Grid.h"
 
-
 class AnimatingSprites
 {
 
+	static sf::Texture* spriteSheetTexture;
+
 private:
 	
-	sf::Texture* spriteSheetTexture;
 	sf::Sprite spriteSheet;
-	
-	int spriteId = 0;
-	sf::Sprite spriteTest[100];
 	
 	sf::Clock clock;
 
 	int xIndex = 0;
 	int yIndex = 0;
+
+	sf::Vector2i positionIndexes;
 
 	sf::Vector2i startFrame;
 	sf::Vector2i currentFrame;
@@ -31,9 +30,8 @@ public:
 	~AnimatingSprites();
 
 	void InitAnimation();
-	void LoadAnimation(std::string filename);
+	static void LoadAnimation(std::string filename);
 	void UpdateAnimation();
 	void RenderAnimation(sf::RenderWindow& window);
-
-	void StartAnimation(sf::Vector2i startFrame, sf::Vector2i endFrame, int speed);
+	void StartAnimation(sf::Vector2i positionIndexes, sf::Vector2i startFrame, sf::Vector2i endFrame, int speed);
 };

@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/graphics.hpp>
-#include <SFML/Window/Keyboard.hpp>
 #include "Grid.h"
+#include "AnimatingSprites.h"
 
 #define TOTAL_CELLS CELL_COUNT_X * CELL_COUNT_Y
 
@@ -30,6 +30,10 @@ public:
 	void TileRender(sf::RenderWindow& window);
 	void UpdatingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordinates);
 	void DeletingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordinates);
+	
+	sf::Sprite tileSprite[TOTAL_CELLS];
+	AnimatingSprites animations[TOTAL_CELLS];
+
 
 	int tileId = 0;
 	int map[TOTAL_CELLS];/* =
@@ -48,5 +52,4 @@ public:
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};*/
 
-	sf::Sprite tileSprite[TOTAL_CELLS];
 };
