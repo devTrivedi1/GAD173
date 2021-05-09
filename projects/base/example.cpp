@@ -50,13 +50,22 @@ void Example::update(float deltaT)
 			{
 				m_running = false;
 			}
-			if (ImGui::MenuItem("Save Map"))
+			if (ImGui::MenuItem("Save Map 1"))
 			{
 				SaveLoad::Save("data/SaveFiles/MapLayout.txt", mapTiles.map, 12, 12);
 			}
-			if (ImGui::MenuItem("Load"))
+			if (ImGui::MenuItem("Save Map 2"))
+			{
+				SaveLoad::Save("data/SaveFiles/MapLayout2.txt", mapTiles.map, 12, 12);
+			}
+			if (ImGui::MenuItem("Load Map 1"))
 			{
 				SaveLoad::Load("data/SaveFiles/MapLayout.txt", mapTiles.map, TOTAL_CELLS);
+				mapTiles.MapLoad();
+			}
+			if (ImGui::MenuItem("Load Map 2"))
+			{
+				SaveLoad::Load("data/SaveFiles/MapLayout2.txt", mapTiles.map, TOTAL_CELLS);
 				mapTiles.MapLoad();
 			}
 			if (ImGui::MenuItem("Select colour"))

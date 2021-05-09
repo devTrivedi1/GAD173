@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "Grid.h"
+#include "Grid/Grid.h"
 
 class AnimatingSprites
 {
@@ -23,8 +23,9 @@ private:
 	sf::Vector2i currentFrame;
 	sf::Vector2i endFrame;
 	int speed;
-
+	
 public:
+
 	bool beginAnimation = false;
 
 	AnimatingSprites();

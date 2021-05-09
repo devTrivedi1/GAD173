@@ -27,107 +27,23 @@ void Tiles::LoadTexture()
 	black = kage::TextureManager::getTexture("data/Black.png");
 	transparent = kage::TextureManager::getTexture("data/White.png");
 
+	AnimatingSprites::LoadAnimation("data/Textures-Sprites/Breakout-SpriteSheet.png");
 
-		AnimatingSprites::LoadAnimation("data/Textures-Sprites/Breakout-SpriteSheet.png");
-
-	}
-
-int GREEN_INDEX = 1;
+}
 void Tiles::MapLoad()
 {
-
-
 	//Textures in the editor-------------------------------------------------
 	for (size_t y = 0; y < CELL_COUNT_Y; y++)
 	{
 		for (size_t x = 0; x < CELL_COUNT_X; x++)
 		{
 			int i = x + y * CELL_COUNT_X;
-
 			std::cout << i << std::endl;
-			
-			//animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, map[i]), sf::Vector2i(5, map[i]), 100);
 
-
-			if (map[i] == 0)
+			if (map[i] > 0)
 			{
-				
-				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 7), sf::Vector2i(5, 7), 100);
-
-			//tileSprite[i].setTexture(*black);
-				//tileSprite[i].setColor(sf::Color(255, 255, 255));
+				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, map[i]), sf::Vector2i(5, map[i]), 50);
 			}
-
-			if (map[i] == 1)
-			{
-				//tileSprite[i].setTexture(*green);
-			//	tileSprite[i].setColor(sf::Color(255, 255, 255));
-
-			
-
-				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, GREEN_INDEX), sf::Vector2i(5, GREEN_INDEX), 100);
-			}
-
-			if (map[i] == 2)
-			{
-				//animation.StartAnimation(i, sf::Vector2i(0, 5), sf::Vector2i(5, 7), 100);
-				//tileSprite[i].setTexture(*red);
-				//tileSprite[i].setColor(sf::Color(255, 255, 255));
-
-
-				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 3), sf::Vector2i(5, 3), 100);
-			}
-
-			if (map[i] == 3)
-			{
-
-				//tileSprite[i].setTexture(*blue);
-				//tileSprite[i].setColor(sf::Color(255, 255, 255));
-
-
-
-				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 0), sf::Vector2i(5, 0), 100);
-			}
-
-			if (map[i] == 4)
-			{
-				//tileSprite[i].setTexture(*purple);
-				//tileSprite[i].setColor(sf::Color(255, 255, 255));
-				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 8), sf::Vector2i(5, 8), 100);
-
-			}
-			if (map[i] == 5)
-			{
-				tileSprite[i].setTexture(*teal);
-				tileSprite[i].setColor(sf::Color(255, 255, 255));
-				animations[i].StartAnimation(sf::Vector2i(x, y), sf::Vector2i(0, 5), sf::Vector2i(5, 5), 100);
-			}
-			if (map[i] == 6)
-			{
-				tileSprite[i].setTexture(*orange);
-				tileSprite[i].setColor(sf::Color(255, 255, 255));
-			}
-			if (map[i] == 7)
-			{
-				tileSprite[i].setTexture(*pink);
-				tileSprite[i].setColor(sf::Color(255, 255, 255));
-			}
-			if (map[i] == 8)
-			{
-				tileSprite[i].setTexture(*yellow);
-				tileSprite[i].setColor(sf::Color(255, 255, 255));
-			}
-
-			if (map[i] == 9)
-			{
-				tileSprite[i].setTexture(*transparent);
-				tileSprite[i].setColor(sf::Color(0));
-			}
-
-			tileSprite[i].setPosition(sf::Vector2f
-									(OFFSET_X + x * CELL_SIZE_X,
-									OFFSET_Y + y * CELL_SIZE_Y));
-			
 		}
 		std::cout << "\n";
 	}
@@ -190,83 +106,20 @@ void Tiles::UpdatingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordina
 
 		map[i] = tileId;
 
-		if (tileId == 0)
-		{
-		
-			
-			/*tileSprite[i].setTexture(*black);
-			map[i] = 0;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));*/
-		}
+		animations[i].StartAnimation(sf::Vector2i(mouseX, mouseY), sf::Vector2i(0, map[i]), sf::Vector2i(5, map[i]), 50);
 
-		if (tileId == 1)
-		{
-			
-			/*tileSprite[i].setTexture(*green);
-			
-			tileSprite[i].setColor(sf::Color(255, 255, 255));*/
-		}
 
-		if (tileId == 2)
+		for (int i = 0; i < TOTAL_CELLS; i++)
 		{
-			
-			/*tileSprite[i].setTexture(*red);
-			
-			tileSprite[i].setColor(sf::Color(255, 255, 255));*/
-		}
-
-		if (tileId == 3)
-		{
-			tileSprite[i].setTexture(*blue);
-			map[i] = 3;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));
-		}
-
-		if (tileId == 4)
-		{
-			tileSprite[i].setTexture(*purple);
-			map[i] = 4;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));
-		}
-
-		if (tileId == 5)
-		{
-			tileSprite[i].setTexture(*teal);
-			map[i] = 5;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));
-		}
-
-		if (tileId == 6)
-		{
-			tileSprite[i].setTexture(*orange);
-			map[i] = 6;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));
-		}
-
-		if (tileId == 7)
-		{
-			tileSprite[i].setTexture(*pink);
-			map[i] = 7;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));
-		}
-		if (tileId == 8)
-		{
-			tileSprite[i].setTexture(*yellow);
-			map[i] = 8;
-			tileSprite[i].setColor(sf::Color(255, 255, 255));
+			animations[i].UpdateAnimation();
 		}
 	
-	}
-
-	for (int i = 0; i < TOTAL_CELLS; i++) {
-		animations[i].UpdateAnimation();
 	}
 
 }
 
 void Tiles::DeletingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordinates)
 {
-
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)
 		&& mouseCoordinates.x > OFFSET_X && mouseCoordinates.x < OFFSET_X + CELL_SIZE_X * CELL_COUNT_X
 		&& mouseCoordinates.y > OFFSET_Y && mouseCoordinates.y < OFFSET_Y + CELL_SIZE_Y * CELL_COUNT_Y)
@@ -276,22 +129,29 @@ void Tiles::DeletingTexture(sf::RenderWindow& window, sf::Vector2i mouseCoordina
 		int i = mouseX + mouseY * CELL_COUNT_X;
 		std::cout << i << std::endl;
 
-		map[i] = 9;
-		tileSprite[i].setColor(sf::Color(0));
+		animations[i].StartAnimation(sf::Vector2i(mouseX, mouseY), sf::Vector2i(0, map[i]), sf::Vector2i(5, map[i]), 50);
+
+		map[i] = tileId;
+		animations[i].beginAnimation = false;
+		for (int i = 0; i < TOTAL_CELLS; i++)
+		{
+			animations[i].UpdateAnimation();
+		}
 	}
 }
 
 void Tiles::TileRender(sf::RenderWindow& window)
 {
-	for (size_t i = 0; i < TOTAL_CELLS; i++)
+	for (int i = 0; i < TOTAL_CELLS; i++) 
 	{
-		window.draw(tileSprite[i]);
-	}
-
-	for (int i = 0; i < TOTAL_CELLS; i++) {
 		animations[i].RenderAnimation(window);
-
 	}
 
-
+	for (int i = 0; i < TOTAL_CELLS; i++)
+	{
+		if (animations[i].beginAnimation == true)
+		{
+			animations[i].UpdateAnimation();
+		}
+	}
 }

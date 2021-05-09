@@ -98,22 +98,32 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation\AnimatingSprites.h" />
     <ClInclude Include="app.h" />
     <ClInclude Include="example.h" />
-    <ClInclude Include="Rabbit.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="Grid\Grid.h" />
+    <ClInclude Include="Load\SaveLoad.h" />
+    <ClInclude Include="Scenes\FirstRound.h" />
+    <ClInclude Include="Scenes\MainMenu.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Scenes\SecondRound.h" />
+    <ClInclude Include="Tiles\Tiles.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation\AnimatingSprites.cpp" />
     <ClCompile Include="app.cpp" />
     <ClCompile Include="dependencies.cpp" />
     <ClCompile Include="example.cpp" />
+    <ClCompile Include="Grid\Grid.cpp" />
+    <ClCompile Include="Load\SaveLoad.cpp" />
+    <ClCompile Include="Scenes\FirstRound.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Rabbit.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="Scenes\MainMenu.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Scenes\SecondRound.cpp" />
+    <ClCompile Include="Tiles\Tiles.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\dev\components\kage2dutil\kage2dutil.vcxproj">

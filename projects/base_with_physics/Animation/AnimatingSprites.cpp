@@ -64,7 +64,7 @@ void AnimatingSprites::UpdateAnimation()
 
 void AnimatingSprites::RenderAnimation(sf::RenderWindow& window)
 {
-	if (beginAnimation == true)
+	if (beginAnimation)
 	{
 		window.draw(spriteSheet);
 	}
@@ -80,7 +80,6 @@ void AnimatingSprites::StartAnimation(sf::Vector2i positionIndexes,  sf::Vector2
 
 	beginAnimation = true;
 	currentFrame = startFrame;
-	
 	spriteSheet.setTexture(*spriteSheetTexture);
 	spriteSheet.setPosition(sf::Vector2f(OFFSET_X + positionIndexes.x * CELL_SIZE_X, OFFSET_Y + positionIndexes.y * CELL_SIZE_Y));
 }  
