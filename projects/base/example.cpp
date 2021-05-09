@@ -27,7 +27,6 @@ bool Example::start()
 
 	animation.InitAnimation();
 	animation.LoadAnimation("data/Textures-Sprites/Breakout-SpriteSheet.png");
-	///animation.StartAnimation(0 sf::Vector2i(0, 5), sf::Vector2i(5, 7), 100);
 
 	return true;
 }
@@ -87,7 +86,6 @@ void Example::update(float deltaT)
 
 	mapTiles.DeletingTexture(m_window, mouseCoordinates);
 	mapTiles.UpdatingTexture(m_window, mouseCoordinates);
-	//animation.UpdateAnimation();
 }
 
 void Example::render()
@@ -95,7 +93,6 @@ void Example::render()
 	m_window.draw(*m_backgroundSprite);
 	mapTiles.TileRender(m_window);
 	Lines.gridRender(m_window);
-	//animation.RenderAnimation(m_window);
 }
 
 void Example::cleanup()

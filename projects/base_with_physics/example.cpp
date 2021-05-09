@@ -25,6 +25,7 @@ bool Example::start()
 
 	sceneManager.AddScene(new MainMenu());
 	sceneManager.AddScene(new FirstRound());
+	sceneManager.AddScene(new SecondRound());
 
 	sceneManager.LoadScene(0);
 
@@ -53,10 +54,15 @@ void Example::update(float deltaT)
 		m_running = false;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && m_window.hasFocus())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && sceneManager.GetActiveSceneIndex() == 0 && m_window.hasFocus())
 	{
 		sceneManager.LoadScene(1);
 	}
+	if (sceneManager.GetActiveSceneIndex() == 1 && sf::Keyboard::isKeyPressed(sf::Keyboard::F1))
+	{
+		sceneManager.LoadScene(2);
+	}
+	
 
 	sceneManager.Update();
 

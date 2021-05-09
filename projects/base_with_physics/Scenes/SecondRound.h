@@ -3,7 +3,7 @@
 
 class SecondRound: public Scene
 {	
-
+public:
 	SecondRound();
 	~SecondRound();
 
@@ -17,6 +17,7 @@ class SecondRound: public Scene
 	Grid grid;
 	AnimatingSprites loadAnimation;
 
-	
+	sf::RectangleShape paddle;
+	sf::CircleShape ball;
 };
 

@@ -10,6 +10,8 @@ SceneManager::~SceneManager()
 
 void SceneManager::LoadScene(int sceneIndex)
 {
+	if (sceneIndex == currentSceneIndex)
+		return;
 	currentSceneIndex = sceneIndex;
 	Scene* scene = scenes[currentSceneIndex];
 	if (scene == nullptr)
@@ -28,6 +30,7 @@ void SceneManager::RemoveScene(int sceneIndex)
 
 void SceneManager::Load()
 {
+
 }
 
 void SceneManager::Update()

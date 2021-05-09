@@ -5,7 +5,7 @@
 class SceneManager
 {
 private:
-	int currentSceneIndex;
+	int currentSceneIndex = -1;
 	std::vector<Scene*> scenes;
 
 public:

@@ -60,7 +60,6 @@ void FirstRound::Update()
 
 void FirstRound::Render(sf::RenderWindow& window)
 {
-	//grid.gridRender(window);
 	loadTile.TileRender(window);
 	window.draw(paddle);
 	window.draw(ball);

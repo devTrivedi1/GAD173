@@ -9,9 +9,9 @@
 class Scene
 {
 private:
+
 	bool isRunning;
 	bool isLoaded;
-
 
 public:
 
@@ -27,5 +27,5 @@ public:
 	virtual void Render(sf::RenderWindow& window);
 
 	inline bool IsLoaded() { return isLoaded; }
-};	 
+};
 

@@ -5,13 +5,12 @@
 
 class AnimatingSprites
 {
-
 	static sf::Texture* spriteSheetTexture;
 
 private:
-	
+
 	sf::Sprite spriteSheet;
-	
+
 	sf::Clock clock;
 
 	int xIndex = 0;
@@ -25,13 +24,15 @@ private:
 	int speed;
 
 public:
+
 	bool beginAnimation = false;
 
 	AnimatingSprites();
 	~AnimatingSprites();
 
-	void InitAnimation();
 	static void LoadAnimation(std::string filename);
+
+	void InitAnimation();
 	void UpdateAnimation();
 	void RenderAnimation(sf::RenderWindow& window);
 	void StartAnimation(sf::Vector2i positionIndexes, sf::Vector2i startFrame, sf::Vector2i endFrame, int speed);
